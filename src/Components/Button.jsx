@@ -1,5 +1,5 @@
 const Button = (props) => {
-  console.log(props);
+  // console.log(props);
   return <button>{props.children}</button>;
 };
 
