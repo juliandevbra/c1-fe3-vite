@@ -15,12 +15,16 @@ const Home = () => {
   console.log(cart);
   return (
     <>
-      <h2>Pedidos a entregar</h2>
-      <ul>
-        {cart.map((pedido) => (
-          <li key={pedido.id}>{pedido.tipo}</li>
-        ))}
-      </ul>
+      {cart.length > 0 && (
+        <>
+          <h2>Pedidos a entregar</h2>
+          <ul>
+            {cart.map((pedido) => (
+              <li key={pedido.id}>{pedido.tipo}</li>
+            ))}
+          </ul>
+        </>
+      )}
       <h1 style={titleStyles}>Lista de pizzas</h1>
       <div className="list-container">
         {pizzas.map((pizza) => (
