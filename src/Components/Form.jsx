@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Message from "./Message";
 const Form = () => {
   //   const [name, setName] = useState("");
   //   const [address, setAddress] = useState("");
