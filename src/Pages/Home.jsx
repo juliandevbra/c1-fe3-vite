@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Components/Card";
-import { pizzas } from "../utils/pizzas";
 import axios from "axios";
 
 const titleStyles = {
