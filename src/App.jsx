@@ -5,10 +5,17 @@ import Navbar from "./Components/Navbar";
 import Contact from "./Pages/Contact";
 import Cart from "./Pages/Cart";
 import Detail from "./Pages/Detail";
+import ParentComponent from "./Clase 13/ParentComponent";
+import LoboEstepario from "./Clase 13/LoboEstepario";
+import Context from "./Clase 13/Context";
 
 function App() {
   return (
     <>
+      {/* <Context>
+        <ParentComponent />
+        <LoboEstepario />
+      </Context> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
