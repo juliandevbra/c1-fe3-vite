@@ -6,14 +6,16 @@ import { useRecipeStates } from "../Context/Context";
 
 const Card = ({ recipe }) => {
   const { id, image, title, pricePerServing } = recipe;
-  const { setCart } = useRecipeStates();
+  const { dispatch } = useRecipeStates();
   return (
     <div className={CardStyles.cardContainer}>
       <img src={image} alt="" className={CardStyles.cardImg} />
       <h3>{title}</h3>
       <h4>{pricePerServing}</h4>
       <Counter />
-      <Button onClick={() => setCart((cart) => [...cart, recipe])}>🛒</Button>
+      <Button onClick={() => dispatch({ type: "ADD_CART", payload: recipe })}>
+        🛒
+      </Button>
       <Link to={"/detail/" + id}>
         <Button>Ver detalle</Button>
       </Link>
