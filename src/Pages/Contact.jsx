@@ -1,4 +1,5 @@
 import Form from "../Components/Form";
+import withErrorBoundary from "../HOC/withErrorBoundary";
 
 const Contact = () => {
   return (
@@ -8,5 +9,5 @@ const Contact = () => {
     </>
   );
 };
-
-export default Contact;
+const ContactWithError = withErrorBoundary(Contact);
+export default ContactWithError;

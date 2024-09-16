@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import withErrorBoundary from "../HOC/withErrorBoundary";
+import { toast } from "react-toastify";
 
 const Detail = () => {
   const [recipe, setRecipe] = useState({});
@@ -16,12 +19,33 @@ const Detail = () => {
   useEffect(() => {
     axios(url)
       .then((res) => {
-        setRecipe(res.data);
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000);
+        console.log(res);
+        if (res.status == 200) {
+          setRecipe(res.data);
+          setTimeout(() => {
+            setLoading(false);
+          }, 2000);
+          toast("Receta obtenida!", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+          });
+        } else {
+          // caso en que la conexión falla
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Error al traer la receta!",
+          footer: err,
+        });
+      });
   }, []);
 
   return (
@@ -39,4 +63,5 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+const DetailWithError = withErrorBoundary(Detail);
+export default DetailWithError;
